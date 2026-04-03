@@ -24,7 +24,7 @@ series1 = pd.Series(list_files)
 
 tmax_path = series1[series1.str.find("tmax") > 0].iloc[0]
 
-tmin_path = series1[series1.str.find("tmax") > 0].iloc[0]
+tmin_path = series1[series1.str.find("tmin") > 0].iloc[0]
 
 
 with rioxarray.open_rasterio(tmin_path) as ds:
