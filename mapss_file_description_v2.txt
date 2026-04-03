@@ -1,0 +1,8 @@
+attribute,elev,ppt,tmp,rad,vpr,wnd,soils_fao
+long_name,elev,precipitation,surface temperature,surface radiation,water vapor pressure,surface wind speed,soils_fao
+input_var_name,elev,prec,tavg,srad,vapr,wind,soils_fao
+type,short,short,int,int,short,int,float
+units,meters,mm month**-1,degrees_C,KJ m**-2 day**-1,pascal,meters/second," "
+numbands,1,12,12,12,12,12,10
+scale,1.0,1.0,100.0,1.0,1.0,100.0,1
+factor,1,1,1,1,1000,1,1
