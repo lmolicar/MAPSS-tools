@@ -1,9 +1,21 @@
+import argparse
 import numpy as np
 import os
 import rioxarray
 import xarray as xr
 
-final_mask_src = "mask.tif"
+parser = argparse.ArgumentParser(prog = "generate_mask.py",
+                                 description = "Generate a mask based on the input files for a MAPSS simulation")
+
+parser.add_argument("--work_dir", 
+                    help = "Where input files are located. The output will be stored in the same location.",
+                    required = False,
+                    default = "")
+
+args = parser.parse_args()
+work_dir = args.work_dir
+
+final_mask_src = os.path.join(work_dir, "mask.tif")
 
 with rioxarray.open_rasterio(final_mask_src) as ds:
     mask_arr = ds.values.squeeze()
@@ -31,7 +43,7 @@ gridpnt_int = np.zeros(gridpnt.shape, dtype=int)
 
 gridpnt_int[:] = gridpnt[:]
 
-gridpnt_dst_dir = ""
+gridpnt_dst_dir = work_dir
 gridpnt_filename = "gridpnt.nc"
 gridpnt_out_path = os.path.join(gridpnt_dst_dir, gridpnt_filename)
 
